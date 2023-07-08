@@ -1,0 +1,32 @@
+{
+  "name": "investapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "electron": "electron .",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "electron-dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && npm run electron\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "electron-is-dev": "^2.0.0",
+    "mysql": "^2.18.1",
+    "next": "^13.4.9",
+    "postcss": "^8.4.25",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.7.2",
+    "tailwindcss": "^3.3.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "electron": "^25.2.0",
+    "electron-reload": "^2.0.0-alpha.1",
+    "wait-on": "^7.0.1"
+  }
+}
