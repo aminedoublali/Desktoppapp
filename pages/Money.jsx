@@ -1,20 +1,45 @@
-import React from 'react'
-import CHF from '../components/CHF'
-import EU from '../components/EU'
-import GBP from '../components/GBP'
-import JP from '../components/JP'
-import MainLayout from '../components/Layouts/Mainlayout'
-import SGD from '../components/SGD'
-import US from '../components/US'
+import React from "react";
+import CurrentDollarPrice from "../api/CurrentDollarPrice";
+import CurrentEuroPrice from "../api/CurrentEuroPrice";
+import CurrentMoroccoPrice from "../api/CurrentMoroccoPrice";
+import CurrentPoundPrice from "../api/CurrentPoundPrice";
+import CurrentSingaporePrice from "../api/CurrentSingaporePrice";
+import CurrentSwissPrice from "../api/CurrentSwissPrice";
+import CHF from "../components/CHF";
+import EU from "../components/EU";
+import GBP from "../components/GBP";
+import MainLayout from "../components/Layouts/Mainlayout";
+import MAD from "../components/MAD";
+import SGD from "../components/SGD";
+import US from "../components/US";
+
 export default function Fx() {
   return (
     <MainLayout>
-          <US/>
-          <JP/>
-          <GBP/>
-          <EU />
-          <CHF/>
-          <SGD/>
+      <div className=" flex items-center">
+        <US />
+        <CurrentDollarPrice className="font-sans text-xl font-semibold text-gray-600 ml-4"/>
+        </div>
+        <div className=" flex items-center">
+        <GBP/>
+        <CurrentPoundPrice />
+        </div>
+        <div className=" flex items-center">
+        <EU/>
+        <CurrentEuroPrice />
+        </div>
+        <div className=" flex items-center">
+        <CHF/>
+        <CurrentSwissPrice />
+        </div>
+        <div className=" flex items-center">
+        <SGD/>
+        <CurrentSingaporePrice />
+        </div>
+        <div className=" flex items-center">
+        <MAD/>
+        <CurrentMoroccoPrice />
+        </div>
     </MainLayout>
-  )
+  );
 }
