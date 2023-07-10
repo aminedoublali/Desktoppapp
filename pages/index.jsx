@@ -58,7 +58,7 @@ const Index = ({data}) => {
 
   // JSX を返す（これが実際にレンダリングされる部分）
   return (
-    <div className='box-border bg-gray-100'>
+    <div className='box-border'>
       <MainLayout>
         <section className='p-0 m-0 ml-4'>
           <p>{data[2].username}</p> {/* ユーザー名を表示 */}

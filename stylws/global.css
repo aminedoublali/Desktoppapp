@@ -1,3 +1,25 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+body{
+    background-color: rgb(203 213 225);
+}
+.Detailbtn{
+    width: 170px;
+    height: 30px;
+    background-color: rgb(167, 255, 226);
+    text-align: center;
+    line-height: 30px;
+    transition: all 0.3s ease;
+}
+.Detailbtn:hover{
+        width: 180px;
+        height: 30px;
+        text-align: center;
+        background-color: rgb(136, 255, 215);
+        line-height: 30px;
+        box-shadow: 0px 0px 15px rgb(130, 255, 213);
+        transition: all 0.3s ease;
+}
