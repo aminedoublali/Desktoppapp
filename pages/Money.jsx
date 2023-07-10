@@ -18,7 +18,7 @@ export default function Fx() {
     <MainLayout>
       <div className=" flex items-center">
         <US />
-        <CurrentDollarPrice className="font-sans text-xl font-semibold text-gray-600 ml-4"/>
+        <CurrentDollarPrice/>
         </div>
         <div className=" flex items-center">
         <GBP/>

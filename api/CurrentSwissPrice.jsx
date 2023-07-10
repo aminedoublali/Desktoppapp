@@ -10,8 +10,8 @@ export default function CurrentSwissPricejsx() {
   }, []);
 
   return (
-    <div>
-      {price ? ` ${price}` : 'Loading...'}
+    <div className=" font-sans text-xl font-semibold text-blue-900 ml-4" style={{ color : '#6b93ff' }}>
+      {price ? ` ￥${price}` : 'Loading...'}
     </div>
   );
 }

@@ -10,8 +10,8 @@ export default function CurrentPoundPrice() {
   }, []);
 
   return (
-    <div>
-      {price ? ` ${price}` : 'Loading...'}
-    </div>
+    <di className=" font-sans text-xl font-semibold text-blue-900 ml-4" style={{ color : '#6b93ff' }}v>
+      {price ? `￥${price}` : 'Loading...'}
+    </di>
   );
 }
