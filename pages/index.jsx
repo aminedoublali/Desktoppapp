@@ -11,6 +11,7 @@ import MainLayout from '../components/Layouts/Mainlayout';
 // ダイナミックインポートを使用してPieComponentを非同期にロード（サーバーサイドレンダリングを無効にする）
 const PieComponent = dynamic( () => import('../components/Pie'), { ssr: false });
 
+
 // Next.js の getStaticProps を使って静的生成時にデータを取得
 export async function getStaticProps() {
     // SQLクエリを定義
