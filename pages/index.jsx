@@ -61,7 +61,7 @@ const Index = ({data}) => {
     <div className='box-border'>
       <MainLayout>
         <section className='p-0 m-0 ml-4'>
-          <p>{data[2].username}</p> {/* ユーザー名を表示 */}
+          <p>{data[1].username}</p> {/* ユーザー名を表示 */}
           <h1 className="text-xl font-bold">Home</h1>
           <PieComponent /> {/* PieComponent を表示 */}
         </section>
