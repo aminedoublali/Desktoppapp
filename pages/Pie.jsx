@@ -13,6 +13,7 @@ export async function getStaticProps() {
     connection.query(transactions, (error, results) => {
       if (error) {
         reject(error);
+        console.log("エラーです！！！a");
       } else {
         resolve(results);
       }
@@ -29,6 +30,7 @@ export async function getStaticProps() {
         connection.query(currencies, [result.currency_id], (error, results) => {
           if (error) {
             reject(error);
+            console.log("エラーです！！！b");
           } else {
             resolve(results);
           }
@@ -44,6 +46,7 @@ export async function getStaticProps() {
   );
 
   // 取得したデータをpropsとして返します
+  console.log(data);
   return {
     props: {
       data: data,
@@ -55,6 +58,7 @@ export async function getStaticProps() {
 const COLORS = ['#0088FE', '#ff5d78', '#cb49ff', '#0004ff'];
 
 const PieComponent = ({ data }) => {
+  console.log(data);
   // データが定義されているか、または空の配列でないかを確認します
   if (!data || data.length === 0) {
     return <div>Loading...</div>;
