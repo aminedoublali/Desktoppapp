@@ -9,6 +9,9 @@ export default function Header() {
     <nav className='  flex items-center ml-auto mr-4'>
         <ul className='flex gap-4 text-gray-800 text-lg font-bold not-italic leading-none tracking-normal'>
         <li className='cursor-pointer hover:text-indigo-600 '>
+        <Link href="/">ホーム</Link>
+        </li>
+        <li className='cursor-pointer hover:text-indigo-600 '>
         <Link href="/Stock">保有株式</Link>
         </li>
         <li className='cursor-pointer  hover:text-indigo-600'>
