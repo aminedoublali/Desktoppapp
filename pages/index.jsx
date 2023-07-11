@@ -9,7 +9,7 @@ import connection from '../api/api.js';
 import MainLayout from '../components/Layouts/Mainlayout';
 
 // ダイナミックインポートを使用してPieComponentを非同期にロード（サーバーサイドレンダリングを無効にする）
-const PieComponent = dynamic( () => import('../components/Pie'), { ssr: false });
+const PieComponent = dynamic( () => import('./Pie.jsx'), { ssr: false });
 
 
 // Next.js の getStaticProps を使って静的生成時にデータを取得
