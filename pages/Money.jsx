@@ -27,7 +27,7 @@ export default function Fx() {
         <GBP/>
         <h1 className="font-sans text-xl font-semibold text-gray-600 ml-4">イギリスポンド</h1>
         <CurrentPoundPrice />
-        <Link className='Detailbtn text-green-950 font-sans font-semibold  ml-4 rounded-md' href="/dashboard">詳細なレートをチェック</Link>
+        <Link className='Detailbtn text-green-950 font-sans font-semibold  ml-4 rounded-md' href="//Dtailgbp">詳細なレートをチェック</Link>
         </div>
         <div className=" flex items-center bg-slate-200 shadow-md p-4 m-4 rounded-md">
         <EU/>
