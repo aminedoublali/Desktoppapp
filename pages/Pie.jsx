@@ -1,18 +1,15 @@
-
 import { Cell, Pie, PieChart, Tooltip } from 'recharts';
 
-// データベース接続を含む自作の API モジュールをインポート
+// データベース接続のためのカスタムAPIモジュールをインポートします
 import connection from '../api/api.js';
 
-
-// Next.js の getStaticProps を使って静的生成時にデータを取得
+// Next.jsのgetStaticPropsを使ってビルド時にデータを取得します
 export async function getStaticProps() {
-  // SQLクエリを定義
-  const transactions = 'SELECT * FROM transactions';
-  const currencies = 'SELECT * FROM currencies';
+  // 各通貨の合計金額を取得するSQLクエリを定義します
+  const transactions = 'SELECT currency_id, SUM(amount) AS total_amount FROM transactions GROUP BY currency_id';
 
-  // SQLクエリを実行し、結果を取得
-  const results = await new Promise((resolve, reject) => {
+  // SQLクエリを実行し、結果を取得します
+  const transactionResults = await new Promise((resolve, reject) => {
     connection.query(transactions, (error, results) => {
       if (error) {
         reject(error);
@@ -22,64 +19,65 @@ export async function getStaticProps() {
     });
   });
 
-  // 各データを JSON シリアライズ可能な形式に変換
-  const jsonResults = results.map(result => {
-    const jsonResult = {};
-    for (const key in result) {
-      // Date オブジェクトを文字列に変換
-      if (result[key] instanceof Date) {
-        jsonResult[key] = result[key].toISOString();
-      } else {
-        jsonResult[key] = result[key];
-      }
-    }
-    return jsonResult;
-  });
+  // currency_idをそのシンボルにマッピングします
+  const data = await Promise.all(
+    transactionResults.map(async (result) => {
+      // 各通貨のシンボルを取得するSQLクエリを定義します
+      const currencies = 'SELECT symbol FROM currencies WHERE id = ?';
+      // SQLクエリを実行し、結果を取得します
+      const currencyResults = await new Promise((resolve, reject) => {
+        connection.query(currencies, [result.currency_id], (error, results) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(results);
+          }
+        });
+      });
 
-  // 取得したデータを props として返す
+      // データを{name: symbol, value: total_amount}の形式で返します
+      return {
+        name: currencyResults[0].symbol,
+        value: result.total_amount,
+      };
+    })
+  );
+
+  // 取得したデータをpropsとして返します
   return {
     props: {
-      data: jsonResults,
+      data: data,
     },
   };
 }
 
-// 主要なコンポーネントを定義
-const Index = ({data}) => {
-  // 最初のデータオブジェクトを選択
-  const firstData = data[0]; 
-  // username プロパティを取得（データがない場合は null を設定）
-  const currency=id = firstData ? firstData.currency_id : null; 
-}
-
-// データの例
-const data = [
-
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 200 },
-  { name: 'Group D', value: 100 }
-];
-
-// グラフの色の例
+// グラフの色を示す例です
 const COLORS = ['#0088FE', '#ff5d78', '#cb49ff', '#0004ff'];
 
-const PieComponent = () => (
-  <PieChart width={400} height={400}>
-    <Pie
-      data={data}
-      cx={200}
-      cy={200}
-      outerRadius={80}
-      fill="#8884d8"
-      dataKey="value"
-    >
-      {
-        data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
-      }
-    </Pie>
-    <Tooltip />
-  </PieChart>
-);
+const PieComponent = ({ data }) => {
+  // データが定義されているか、または空の配列でないかを確認します
+  if (!data || data.length === 0) {
+    return <div>Loading...</div>;
+  }
+
+  // データが定義されていて空の配列でない場合、PieChartをレンダリングします
+  return (
+    <PieChart width={400} height={400}>
+      <Pie
+        data={data}
+        cx={200}
+        cy={200}
+        outerRadius={80}
+        fill="#8884d8"
+        dataKey="value"
+      >
+        {
+          data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+        }
+      </Pie>
+      <Tooltip />
+    </PieChart>
+  );
+};
 
 export default PieComponent;
