@@ -33,3 +33,25 @@ body{
     box-shadow: 0px 0px 15px rgb(203, 214, 226);
     border-radius: 10px;
 }
+.btnbox{
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    text-align: center;
+    line-height: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+}
+.btnbox:hover{
+    width: 40px;
+    height: 20px;
+    background-color: rgb(255, 0, 0);
+    display: inline-block;
+    text-align: center;
+    line-height: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 5px rgb(255, 0, 0);
+}
