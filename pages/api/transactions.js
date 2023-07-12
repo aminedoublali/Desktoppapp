@@ -1,6 +1,6 @@
 // pages/api/transactions.js
 
-import connection from '../../api/api.js';
+import connection from './api.js';
 
 export default async (req, res) => {
   const transactions = 'SELECT currency_id, SUM(amount) AS total_amount FROM transactions GROUP BY currency_id';
