@@ -54,6 +54,29 @@ connection.connect((err) => {
     // 他の通貨データを追加できます...
   ];
 
+    // 新たに購入するトランザクションのリスト
+const newTransactions = [
+  { currency_id: 1, amount: 100.0, date: '2023-07-12' },
+  { currency_id: 2, amount: 200.0, date: '2023-07-13' },
+  { currency_id: 3, amount: 300.0, date: '2023-07-14' },
+  // 他のトランザクションデータを追加できます...
+];
+
+// それぞれの新たなトランザクションデータについて...
+newTransactions.forEach((transaction) => {
+  // INSERT INTOクエリを作成
+  const query = `
+    INSERT INTO Transactions (currency_id, amount, date)
+    VALUES (${transaction.currency_id}, ${transaction.amount}, '${transaction.date}');
+  `;
+
+  // クエリを実行
+  connection.query(query, (err, results) => {
+    if (err) throw err;
+    console.log(`Inserted new transaction: ${JSON.stringify(transaction)}`);
+  });
+});
+
   // それぞれの通貨データについて...
   currencies.forEach((currency) => {
     // INSERT INTOクエリを作成
