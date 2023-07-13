@@ -34,7 +34,7 @@ export default function Form() {
     </select>
   </div>
   <div className="flex flex-col">
-    <label htmlFor="amount" className="mb-2 font-sans text-base font-medium text-gray-600">枚数</label>
+    <label htmlFor="amount" className="mb-2 font-sans text-base font-medium text-gray-600">ユニット</label>
     <input id="amount" type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
   </div>
   <div className="flex flex-col">

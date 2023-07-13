@@ -57,9 +57,9 @@ export default function Dtailus( onClose) {
           <div className="bg-white  p-10 rounded-md shadow-md">
           <button className="btnbox"  onClick={() => setIsSellModalOpen(false)}>×</button>
           <div className="flex items-center">
-            <JP />
+          <US />
             <Exchange />
-            <US />
+            <JP />
             </div>
           <Form />
           </div>
