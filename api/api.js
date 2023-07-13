@@ -16,7 +16,7 @@ connection.connect((err) => {
 
   // Currenciesテーブルを作成するSQLクエリ
   const createCurrenciesTable = `
-    CREATE TABLE IF NOT EXISTS Currencies (
+    CREATE TABLE IF NOT EXISTS currencies (
       id INT PRIMARY KEY,
       name VARCHAR(50),
       symbol VARCHAR(10)
@@ -31,12 +31,12 @@ connection.connect((err) => {
 
   // Transactionsテーブルを作成するSQLクエリ
   const createTransactionsTable = `
-    CREATE TABLE IF NOT EXISTS Transactions (
+    CREATE TABLE IF NOT EXISTS transactions (
       id INT PRIMARY KEY,
       currency_id INT,
       amount FLOAT,
       date DATE,
-      FOREIGN KEY(currency_id) REFERENCES Currencies(id)
+      FOREIGN KEY(currency_id) REFERENCES currencies(id)
     );
   `;
 
@@ -58,7 +58,7 @@ connection.connect((err) => {
   currencies.forEach((currency) => {
     // INSERT INTOクエリを作成
     const query = `
-      INSERT INTO Currencies (id, name, symbol)
+      INSERT INTO currencies (id, name, symbol)
       VALUES (${currency.id}, '${currency.name}', '${currency.symbol}')
       ON DUPLICATE KEY UPDATE name = VALUES(name), symbol = VALUES(symbol);
     `;
